@@ -1,9 +1,14 @@
 <html>
 	<head>
 		<script>
+		// For tablets and monitors, the frames should be side by side
+		// looks better one on top of the other
 		function setFramesetOrientation(){
-			var frameSet = document.getElementById("frames");
-			if (window.innerWidth >= 768) {
+			const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream; 
+			const iw = (iOS) ? screen.width : window.innerWidth; // ensure iOS compatibility
+
+			const frameSet = document.getElementById("frames");
+			if (iw >= 768) { // magic number just slightly larger than phablet width
 			frameSet.cols = "25%,*";
 			frameSet.rows = "";
 			} else {
@@ -18,9 +23,9 @@
 		</script>
 	</head>
 		<frameset id="frames">
-			<frame src="navigation.html" name="nav" scrolling="No">
+			<frame src="navigation.html" name="nav">
 			</frame>
-			<frame  src="main.html" name="main" scrolling="No">
+			<frame  src="main.html" name="main">
 			</frame>
 		</frameset>
 </html>
