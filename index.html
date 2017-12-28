@@ -1,7 +1,26 @@
 <html>
-<frameset cols="280,*">
-	<frame src="navigation.html" name="nav" scrolling="No">
-	</frame>
-	<frame src="main.html" name="main" scrolling="No">
-	</frame>
-</frameset>
+	<head>
+		<script>
+		function setFramesetOrientation(){
+			var frameSet = document.getElementById("frames");
+			if (window.innerWidth >= 768) {
+			frameSet.cols = "25%,*";
+			frameSet.rows = "";
+			} else {
+			frameSet.rows = "25%,*";
+			frameSet.cols = ""
+			}
+		};
+		window.addEventListener("resize",setFramesetOrientation);
+		window.onload = function() {
+			setFramesetOrientation();
+		};
+		</script>
+	</head>
+		<frameset id="frames">
+			<frame src="navigation.html" name="nav" scrolling="No">
+			</frame>
+			<frame  src="main.html" name="main" scrolling="No">
+			</frame>
+		</frameset>
+</html>
